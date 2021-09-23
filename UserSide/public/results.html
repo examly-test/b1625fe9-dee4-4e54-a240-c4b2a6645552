@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quizitup</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="./js/loadresults.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/saveresults.js"></script>
+    <script src="./js/deleteuserresults.js"></script>
+</head>
+
+<body>
+    <div class="jumbotron" style="text-align: center; font-family:cursive ; font-size: large;">
+        What's Quizzin?!
+        <button type="button" class="btn btn-outline-danger" id="logout" style="position: absolute; right: 50px;">Logout</button>
+    </div>
+    <h2 style="font-family: cursive; text-align: center;">Your Quiz Results!!</h2>
+    <div id="piechart" style="width: 500px; height: 500px; margin-left: 285px;"></div>
+    <div id="piechartforcorrect" style="width: 500px; height: 500px; margin-left: 713px; margin-top: -489px;"></div>
+    <div class="container" id="loadwrong" style="display:flex;"></div>
+    <div id="userchoice" style="margin-left: 585px; margin-top: 26px;"></div>
+</body>
+<script>
+    $(document).ready(function() {
+        function disablePrev() {
+            window.history.forward()
+        }
+        window.onload = disablePrev();
+        window.onpageshow = function(evt) {
+            if (evt.persisted) disableBack()
+        }
+    });
+</script>
+
+</html>

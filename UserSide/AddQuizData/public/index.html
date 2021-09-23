@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
+    <script src="./js/diplayoninsert.js"></script>
+    <script src="./js/displaysubjectcardsonload.js"></script>
+    <script src="./js/dsiplaydifficulty.js"></script>
+    <script src="./js/displaychapter.js"></script>
+    <script src="./js/displaysection.js"></script>
+    <script src="./js/displayqac.js"></script>
+    <script src="./js/editdisplayedqac.js"></script>
+    <script src="./js/modifydisplayedqac.js"></script>
+    <script src="./js/addextraqac.js"></script>
+    <script src="./js/deleterecords.js"></script>
+    <script src="./js/addchapter.js"></script>
+    <script src="./js/saveaddedchapter.js"></script>
+    <script src="./js/addsection.js"></script>
+    <script src="./js/saveaddedsection.js"></script>
+    <script src="./js/deletedifficulty.js"></script>
+    <script src="./js/deletechapter.js"></script>
+    <script src="./js/deletesection.js"></script>
+    <script src="./js/deletesubject.js"></script>
+    <script src="./js/geturl.js"></script>
+    <title>Document</title>
+</head>
+<style></style>
+
+<body>
+    <div class="jumbotron" style="height: 36px; background-color: #000000;">
+        <ul class="nav justify-content-center" style="position: relative; top: -25px; ">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" data-toggle="modal" data-target="#createnewtopic" style="color: #ffffff;
+    text-decoration: none;
+    background-color: transparent;">Create New Topic</a>
+            </li>
+        </ul>
+    </div>
+    <div class="alert alert-info" role="alert" style="margin-top: -32px; text-align: center;">
+        Note: Difficulty levels easy and medium are mandatory, if ommitted, only subjects with difficulty level easy and medium will be displayed on the user page, difficulty level hard can be optional
+    </div>
+    <div class="container" style="  display: flex; width: 100%; padding: 50px; position: absolute; left: 462px;">
+        <div class="card" style="width: 440px; height: 485px; position: absolute; right: 607px; border-color: black;">
+
+            <div class="card-body">
+                <div class="displaysubjects"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="createnewtopic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="topicbody">
+                                <label>Select difficulty level</label>
+                                <input type="radio" name="diff" id="difficulty" value="easy" style="margin-left: 10px;" />
+                                <label>Easy</label>
+
+                                <input type="radio" name="diff" id="difficulty" value="medium" style="margin-left: 10px;" />
+                                <label>Medium</label>
+
+                                <input type="radio" name="diff" id="difficulty" value="hard" style="margin-left: 10px;" />
+                                <label>Hard</label>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Enter Subject</span>
+                                    </div>
+                                    <input type="text" id="subject" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                                </div>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Enter Chapter</span>
+                                    </div>
+                                    <input type="text" id="chapter" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                                </div>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Enter Section</span>
+                                    </div>
+                                    <input type="text" id="section" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                                </div>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Enter Question</span>
+                                    </div>
+                                    <input type="text" id="question" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                                </div>
+                                <div id="qac" class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="radio" id="answer" name="options" aria-label="Checkbox for following text input" />
+                                        </div>
+                                    </div>
+                                    <input type="text" id="optionstext" class="form-control" aria-label="Text input with checkbox" />
+                                </div>
+                                <div id="qac" class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="radio" id="answer" name="options" aria-label="Checkbox for following text input" />
+                                        </div>
+                                    </div>
+                                    <input type="text" id="optionstext" class="form-control" aria-label="Text input with checkbox" />
+                                </div>
+                                <div id="qac" class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="radio" id="answer" name="options" aria-label="Checkbox for following text input" />
+                                        </div>
+                                    </div>
+                                    <input type="text" id="optionstext" class="form-control" aria-label="Text input with checkbox" />
+                                </div>
+                                <div id="qac" class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="radio" id="answer" name="options" aria-label="Checkbox for following text input" />
+                                        </div>
+                                    </div>
+                                    <input type="text" id="optionstext" class="form-control" aria-label="Text input with checkbox" />
+                                </div>
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Enter Explanation</span>
+                                    </div>
+                                    <input type="text" id="explanation" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                                </div>
+                                <button type="button" id="save" class="btn btn-outline-success" style="margin-left: 185px;">
+                  Save
+                </button>
+                            </div>
+                            <div class="displayquestions"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="subcard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title subtitle" id="exampleModalLabel">
+                        Modal title
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <div class="retall"></div>
+                </div>
+                <div class="modal-footer">
+                    <h4 style="margin-right: 144px;">What's Quizzin?</h4>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
